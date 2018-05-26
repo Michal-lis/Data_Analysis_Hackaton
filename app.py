@@ -9,7 +9,7 @@ def main():
                                                                   table_name="grid250_dochod",
                                                                   connection=connection,
                                                                   stations=stations,
-                                                                  grid_count=3)
+                                                                  grid_count=9)
     averaged_results = preprocess.get_averages_per_station(result)
     print(result)
     print(averaged_results)

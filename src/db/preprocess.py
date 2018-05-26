@@ -9,7 +9,7 @@ def get_averages_per_station(lists_from_query, omitted_values=[]):
                 print(summed)
                 count += l[0]
         if count != 0:
-            averages.append(summed / count)
+            averages.append(count / summed)
         else:
             averages.append(0)
     return averages
