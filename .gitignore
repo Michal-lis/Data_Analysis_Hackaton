@@ -25,6 +25,7 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+air-quality-data-from-extensive-network-of-sensors/sample.py
 MANIFEST
 
 # PyInstaller
