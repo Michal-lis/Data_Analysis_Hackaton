@@ -1,4 +1,6 @@
-def get_averages_per_station(lists_from_query, omitted_values=[]):
+def get_averages_per_station(lists_from_query, omitted_values=None):
+    if omitted_values is None:
+        omitted_values = []
     averages = []
     for arr in lists_from_query:
         summed = 0
