@@ -1,0 +1,10 @@
+JL
+
+AP
+
+KP
+
+ML
+
+1. visualisation of daily visualisation from data from kaggle (daily parameters visualisation) -> sensors december average
+2. sql aggregation_locit_datasets
