@@ -1,10 +1,10 @@
 ﻿-- dodaj Where = kraków, dodaj groupby count i policz rózne sklepy itp
 
-SELECT 
+SELECT
 ld1.eurogrid_0250,
 ld1.geometria92,
-ld2.populacja_razem, 
-ld2.budynki_all, 
+ld2.populacja_razem,
+ld2.budynki_all,
 ld2.budynki_mieszkalne,
 ld3.dochod_bud_pra,
 ld4.nazwa_pow,
@@ -20,7 +20,6 @@ ON ld1.eurogrid_0250=ld4.eurogrid_0250
 LEFT JOIN locit_datasets.poi poi
 ON ld1.geometria92=poi.geometria92
 LIMIT 50;
-
 
 /* count bus stops in 1500m from point */
 SELECT COUNT(*) AS liczba_przystanków
