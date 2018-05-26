@@ -40,5 +40,12 @@ WHERE poi_guid IN (
 )
 GROUP BY geometria92;
 
-
+/* count bus stops in 1500m from point */
+SELECT COUNT(*) AS liczba_przystanków
+FROM locit_datasets.poi
+WHERE poi_guid IN (
+  SELECT ldp.poi_guid
+  FROM locit_datasets.poi ldp
+  WHERE ldp.poi_subcategory_name='Przystanek autobusowy'
+) AND ST_Distance_sphere(ST_SetSRID(ST_MakePoint(20, 50),4674), ST_Centroid(ST_TRANSFORM(geometria92,4674) )) < 1500
 

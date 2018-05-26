@@ -59,3 +59,18 @@ def get_columns_from_table(table_name, columns, connection):
     query = "SELECT " + columns_string + " FROM locit_datasets." + table_name
     cursor.execute(query)
     return cursor.fetchall()
+
+
+def get_no_places_in_radius(lon, lat, radius, category, conn):
+    query = """
+SELECT COUNT(*) AS liczba_przystanków
+FROM locit_datasets.poi 
+WHERE poi_guid IN (
+  SELECT ldp.poi_guid
+  FROM locit_datasets.poi ldp
+  WHERE ldp.poi_subcategory_name='{}'
+) AND ST_Distance_sphere(ST_SetSRID(ST_MakePoint({}, {}),4674), ST_Centroid(ST_TRANSFORM(geometria92,4674) )) < {}
+    """.format(category, lon, lat,radius)
+    cursor = conn.cursor()
+    cursor.execute(query)
+    return cursor.fetchall()[0][0]
