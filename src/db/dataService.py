@@ -16,8 +16,8 @@ def get_columns_from_table(table_name, columns, connection):
     cursor = connection.cursor()
     columns_string = columns[0]
     if len(columns) > 1:
-        for col in columns:
-            columns_string += ", " + col
+        for i in range(1, len(columns)):
+            columns_string += ", " + columns[i]
     query = "SELECT " + columns_string + " FROM locit_datasets." + table_name
     cursor.execute(query)
     return cursor.fetchall()
