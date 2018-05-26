@@ -1,10 +1,11 @@
 import src.db.dataService as db
 import src.db.preprocess as preprocess
+import pandas
 
 
 def main():
     connection = db.create_connection()
-    stations = [[20, 50], [20, 50.1]]
+
     result = db.get_columns_from_neighbouring_grids_near_stations(column="dochod_bud_pra",
                                                                   table_name="grid250_dochod",
                                                                   connection=connection,
