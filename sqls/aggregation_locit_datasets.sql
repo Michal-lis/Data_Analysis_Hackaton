@@ -21,24 +21,6 @@ LEFT JOIN locit_datasets.poi poi
 ON ld1.geometria92=poi.geometria92
 LIMIT 50;
 
-SELECT geometria92,COUNT(poi_category_name)
-FROM locit_datasets.poi
-GROUP BY geometria92
-LIMIT 1000;
-
-SELECT * 
-FROM locit_datasets.poi
-LIMIT 1000;
-
-SELECT geometria92, COUNT(*) AS liczba_przystanków
-FROM locit_datasets.poi 
-WHERE poi_guid IN (
-  SELECT ldp.poi_guid
-  FROM locit_datasets.poi ldp
-  WHERE ldp.poi_poviat IN ('KRAKOWSKI','KRAKÓW') 
-  AND ldp.poi_subcategory_name='Przystanek autobusowy'
-)
-GROUP BY geometria92;
 
 /* count bus stops in 1500m from point */
 SELECT COUNT(*) AS liczba_przystanków

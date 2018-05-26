@@ -70,7 +70,7 @@ WHERE poi_guid IN (
   FROM locit_datasets.poi ldp
   WHERE ldp.poi_subcategory_name='{}'
 ) AND ST_Distance_sphere(ST_SetSRID(ST_MakePoint({}, {}),4674), ST_Centroid(ST_TRANSFORM(geometria92,4674) )) < {}
-    """.format(category, lon, lat,radius)
+    """.format(category, lon, lat, radius)
     cursor = conn.cursor()
     cursor.execute(query)
     return cursor.fetchall()[0][0]
