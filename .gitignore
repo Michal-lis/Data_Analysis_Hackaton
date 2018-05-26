@@ -8,7 +8,7 @@ __pycache__/
 # C extensions
 *.so
 .idea
-# Distribution / packaging
+# Distribution / packag
 .Python
 build/
 develop-eggs/
