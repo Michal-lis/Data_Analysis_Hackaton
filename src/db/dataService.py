@@ -18,9 +18,12 @@ def get_columns_from_neighbouring_grids_near_stations(column: str, stations, tab
 
 
 def _build_query_grids(column: str, station, table_name: str, grid_count):
-    query_template = """SELECT 	#TABLE#.#COLUMN# 
+    query_template = """
+SELECT xd.XD
+FROM (
+SELECT 	max(#TABLE#.#COLUMN#) as XD, #TABLE#.eurogrid_0250
                 FROM	(
-                    SELECT 
+                    SELECT DISTINCT
                       grid250.eurogrid_0250,
                       ST_Distance_sphere(ST_SetSRID(ST_MakePoint(#LONGITUDE#, #LATITUDE#),4674), ST_Centroid(ST_TRANSFORM(geometria92,4674) )) as dist
                     FROM 
@@ -29,7 +32,9 @@ def _build_query_grids(column: str, station, table_name: str, grid_count):
                     LIMIT #GRIDS#
                 ) as lista_id_gridow
                 INNER JOIN locit_datasets.#TABLE#
-                ON (lista_id_gridow.eurogrid_0250 = #TABLE#.eurogrid_0250)"""
+                ON (lista_id_gridow.eurogrid_0250 = #TABLE#.eurogrid_0250)
+Group by #TABLE#.eurogrid_0250) as xd
+"""
 
     query_template = query_template.replace("#TABLE#", table_name)
     query_template = query_template.replace("#COLUMN#", column)
