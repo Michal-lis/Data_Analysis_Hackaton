@@ -1,8 +1,8 @@
-import src.db.dataService as db
-import src.db.preprocess as preprocess
 import pandas as pd
 
-from get_location_features import get_location_features_by_squares, get_location_features_by_radius, get_elevation_data
+import src.db.dataService as db
+from src.get_location_features import get_location_features_by_squares, get_location_features_by_radius, \
+    get_elevation_data
 
 
 def main():
