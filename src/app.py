@@ -26,8 +26,8 @@ def main():
         'Stacja Paliw': [1000, 3000]
     }
 
-    # sensors_data = get_location_features_by_squares(sensors_data, connection, features_by_squares, squares)
-    # sensors_data = get_location_features_by_radius(sensors_data, connection, features_by_radius)
+    sensors_data = get_location_features_by_squares(sensors_data, connection, features_by_squares, squares)
+    sensors_data = get_location_features_by_radius(sensors_data, connection, features_by_radius)
     sensors_data = get_elevation_data(sensors_data)
     print(sensors_data.head())
 

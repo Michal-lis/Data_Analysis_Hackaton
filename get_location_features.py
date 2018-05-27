@@ -34,3 +34,25 @@ def get_elevation_data(sensors_data):
     sensors_data['elevation'] = [free_open_elevation(row['latitude'], row['longitude']) for id, row in
                                  sensors_data.iterrows()]
     return sensors_data
+
+def get_all_features(data, conn):
+    features_by_squares = [
+        ('grid250_dochod', 'dochod_bud_pra'),
+        ('grid250_demo_ext', 'populacja_razem'),
+        ('grid250_demo_ext', 'budynki_all'),
+        ('grid250_demo_ext', 'budynki_mieszkalne'),
+    ]
+    squares = [9, 16, 25]
+
+    features_by_radius = {
+        'Przystanek autobusowy': [1000, 2000],
+        'Oddział Banku': [1000, 2000],
+        'Przystanek tramwajowy': [1000, 2000],
+        'Hipermarket': [1000, 2000],
+        'Stacja Paliw': [1000, 3000]
+    }
+
+    data = get_location_features_by_squares(data, conn, features_by_squares, squares)
+    data = get_location_features_by_radius(data, conn, features_by_radius)
+    data = get_elevation_data(data)
+    return data
