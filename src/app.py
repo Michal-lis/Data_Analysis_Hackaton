@@ -2,12 +2,13 @@ import src.db.dataService as db
 import src.db.preprocess as preprocess
 import pandas as pd
 
-from get_location_features import get_location_features_by_squares, get_location_features_by_radius
+from get_location_features import get_location_features_by_squares, get_location_features_by_radius, get_elevation_data
 
 
 def main():
     connection = db.create_connection()
-    sensors_data = pd.read_csv("air-quality-data-from-extensive-network-of-sensors/sensor_locations.csv").set_index(
+    sensors_data = pd.read_csv(
+        "data/air-quality-data-from-extensive-network-of-sensors/sensor_locations.csv").set_index(
         'id')
     features_by_squares = [
         ('grid250_dochod', 'dochod_bud_pra'),
@@ -26,13 +27,9 @@ def main():
     }
 
     # sensors_data = get_location_features_by_squares(sensors_data, connection, features_by_squares, squares)
-    sensors_data = get_location_features_by_radius(sensors_data, connection, features_by_radius)
-    
-
+    # sensors_data = get_location_features_by_radius(sensors_data, connection, features_by_radius)
+    sensors_data = get_elevation_data(sensors_data)
     print(sensors_data.head())
-
-
-
 
 
 if __name__ == "__main__":

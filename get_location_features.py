@@ -2,6 +2,9 @@ import src.db.dataService as db
 import src.db.preprocess as preprocess
 import pandas as pd
 
+from src.tools import free_open_elevation
+
+
 def get_location_features_by_squares(sensors_data, conn, features, squares):
     for table, feature in features:
         for no_squares in squares:
@@ -17,10 +20,17 @@ def get_location_features_by_squares(sensors_data, conn, features, squares):
             sensors_data["{}_{}".format(feature, no_squares)] = pd.Series(summed_results, index=sensors_data.index)
     return sensors_data
 
+
 def get_location_features_by_radius(sensors_data, conn, features_config):
     for feature, radiuses in features_config.items():
         for radius in radiuses:
             sensors_data["{}_{}".format(feature, radius)] = [
                 db.get_no_places_in_radius(row['longitude'], row['latitude'], radius, feature, conn)
                 for id, row in sensors_data.iterrows()]
+    return sensors_data
+
+
+def get_elevation_data(sensors_data):
+    sensors_data['elevation'] = [free_open_elevation(row['latitude'], row['longitude']) for id, row in
+                                 sensors_data.iterrows()]
     return sensors_data
