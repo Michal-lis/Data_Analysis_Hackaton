@@ -15,15 +15,26 @@ https://open-elevation.com/
 
 Technology used: Python (numpy, pandas, matplotlib, seaborn, scikit-learn, xgboost), Jupyter Notebooks, PostgreSQL
 
+
 Sensors locations with grid
+
+
 ![Screenshot](images_and_presentation/sensor_location_with_grid.png)
 
+
 Sensors measurements
+
+
 ![Screenshot](images_and_presentation/sensor_measurements.png)
 
+
 Feature importance
+
+
 ![Screenshot](images_and_presentation/feature_importance.png)
 
+
 Simulation results
+
 
 ![Screenshot](images_and_presentation/simulation_results.png)
