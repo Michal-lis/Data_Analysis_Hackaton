@@ -25,4 +25,5 @@ Feature importance
 ![Screenshot](images_and_presentation/feature_importance.png)
 
 Simulation results
+
 ![Screenshot](images_and_presentation/simulation_results.png)
