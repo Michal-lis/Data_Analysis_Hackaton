@@ -38,3 +38,9 @@ Simulation results
 
 
 ![Screenshot](images_and_presentation/simulation_results.png)
+
+
+Simulation conclusions
+
+
+![Screenshot](images_and_presentation/results.png)
